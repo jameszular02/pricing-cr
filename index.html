@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pricing CR — Goodyear</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap">
+<style>
+  :root {
+    --yellow:   #FFD100;
+    --black:    #0A0A0A;
+    --charcoal: #1C1C1C;
+    --mid:      #2E2E2E;
+    --silver:   #8A8A8A;
+    --smoke:    #F4F4F4;
+    --white:    #FFFFFF;
+    --teal:     #4BBFAD;
+    --blue:     #6AAED6;
+    --lilac:    #9B8EC4;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--white);
+    color: var(--charcoal);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--black);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 340px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .hero-stripe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 6px;
+    height: 100%;
+    background: var(--yellow);
+  }
+
+  .hero-bg-text {
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-60%);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: clamp(120px, 22vw, 220px);
+    line-height: 1;
+    color: rgba(255,255,255,0.04);
+    user-select: none;
+    letter-spacing: -4px;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    padding: 56px 40px 48px 52px;
+    max-width: 680px;
+  }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .hero-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .hero-logo-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--yellow);
+    text-transform: uppercase;
+  }
+
+  .hero-divider {
+    width: 1px;
+    height: 16px;
+    background: rgba(255,255,255,0.25);
+  }
+
+  .hero-tag {
+    font-size: 12px;
+    color: var(--silver);
+    font-weight: 400;
+    letter-spacing: 0.5px;
+  }
+
+  .hero-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: clamp(52px, 10vw, 90px);
+    line-height: 0.92;
+    color: var(--white);
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+  }
+
+  .hero-title span {
+    color: var(--yellow);
+    display: block;
+  }
+
+  .hero-sub {
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.55);
+    max-width: 440px;
+    font-weight: 300;
+  }
+
+  /* ── SECTION COMMON ── */
+  .section {
+    padding: 64px 40px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--silver);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #E0E0E0;
+  }
+
+  .section-heading {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: clamp(32px, 5vw, 46px);
+    line-height: 1.05;
+    color: var(--black);
+    margin-bottom: 20px;
+  }
+
+  .section-body {
+    font-size: 16px;
+    line-height: 1.75;
+    color: #444;
+    max-width: 640px;
+  }
+
+  /* ── WHAT IS PRICING ── */
+  .intro-section {
+    background: var(--white);
+    border-bottom: 1px solid #E8E8E8;
+  }
+
+  .intro-highlight {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--black);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-bottom: 16px;
+  }
+
+  /* ── PROCESS STEPS ── */
+  .process-section {
+    background: var(--smoke);
+    padding: 64px 0;
+  }
+
+  .process-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 40px;
+  }
+
+  .step {
+    background: var(--white);
+    padding: 28px 24px;
+    border-top: 3px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .step:nth-child(1) { border-top-color: var(--lilac); }
+  .step:nth-child(2) { border-top-color: var(--blue); }
+  .step:nth-child(3) { border-top-color: var(--teal); }
+  .step:nth-child(4) { border-top-color: var(--teal); }
+  .step:nth-child(5) { border-top-color: var(--yellow); }
+  .step:nth-child(6) { border-top-color: #E8885A; }
+
+  .step-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 42px;
+    line-height: 1;
+    color: #EBEBEB;
+    margin-bottom: 10px;
+  }
+
+  .step-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 19px;
+    color: var(--black);
+    margin-bottom: 8px;
+    line-height: 1.1;
+  }
+
+  .step-detail {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  /* ── PILLARS ── */
+  .pillars-section {
+    background: var(--white);
+    border-bottom: 1px solid #E8E8E8;
+  }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+  }
+
+  .pillar {
+    padding-left: 20px;
+    border-left: 4px solid transparent;
+  }
+
+  .pillar:nth-child(1) { border-left-color: var(--yellow); }
+  .pillar:nth-child(2) { border-left-color: var(--teal); }
+  .pillar:nth-child(3) { border-left-color: var(--blue); }
+
+  .pillar-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--black);
+    margin-bottom: 14px;
+    line-height: 1.1;
+  }
+
+  .pillar-sub {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--silver);
+    margin-bottom: 6px;
+    margin-top: 14px;
+  }
+
+  .pillar ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .pillar ul li {
+    font-size: 13px;
+    color: #555;
+    padding: 3px 0;
+    line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .pillar ul li::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--silver);
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+
+  .pillar-team {
+    margin-top: 18px;
+    padding: 8px 12px;
+    background: var(--smoke);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--mid);
+    border-radius: 3px;
+  }
+
+  /* ── TEAM ── */
+  .team-section {
+    background: var(--charcoal);
+    padding: 64px 40px;
+  }
+
+  .team-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .team-section .section-title {
+    color: rgba(255,255,255,0.35);
+    border-bottom-color: rgba(255,255,255,0.1);
+  }
+
+  .team-section .section-heading {
+    color: var(--white);
+  }
+
+  .team-gm {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 32px 0 28px;
+    padding: 20px 24px;
+    background: rgba(255,255,255,0.05);
+    border-left: 4px solid var(--yellow);
+    max-width: 360px;
+  }
+
+  .team-gm-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--yellow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .team-gm-icon svg { width: 22px; height: 22px; }
+
+  .team-gm-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--white);
+  }
+
+  .team-gm-role {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    margin-top: 2px;
+  }
+
+  .team-leads {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+    max-width: 600px;
+  }
+
+  .team-lead {
+    padding: 14px 18px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 4px;
+  }
+
+  .team-lead-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--white);
+  }
+
+  .team-lead-role {
+    font-size: 12px;
+    color: var(--teal);
+    margin-top: 2px;
+  }
+
+  .team-cr-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 16px;
+  }
+
+  .team-specialists {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .specialist-chip {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    padding: 5px 12px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 100px;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--black);
+    padding: 28px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--yellow);
+    letter-spacing: 1px;
+  }
+
+  .footer-note {
+    font-size: 11px;
+    color: rgba(255,255,255,0.25);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    .section, .process-inner, .team-inner { padding-left: 24px; padding-right: 24px; }
+    .section { padding-top: 48px; padding-bottom: 48px; }
+    .hero-inner { padding: 40px 24px 40px 30px; }
+    .steps-grid { grid-template-columns: 1fr 1fr; }
+    .pillars-grid { grid-template-columns: 1fr; }
+    .team-leads { grid-template-columns: 1fr; }
+    .hero-bg-text { font-size: 100px; right: -10px; }
+    .footer { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (max-width: 460px) {
+    .steps-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-stripe"></div>
+  <div class="hero-bg-text">CR</div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <div class="hero-logo">
+        <span class="hero-logo-name">Goodyear</span>
+      </div>
+      <div class="hero-divider"></div>
+      <span class="hero-tag">Pricing Administration</span>
+    </div>
+    <h1 class="hero-title">
+      Pricing<span>CR</span>
+    </h1>
+    <p class="hero-sub">Who we are, what we do, and how we keep Goodyear's pricing engine running — from the heart of Costa Rica.</p>
+  </div>
+</header>
+
+<!-- WHAT IS PRICING -->
+<section class="intro-section">
+  <div class="section">
+    <div class="section-title">About the team</div>
+    <h2 class="section-heading">What is Pricing?</h2>
+    <p class="section-body">
+      Pricing is the function that determines, governs, and executes how Goodyear brings its products to market at the right price, at the right time, for the right customer. The Pricing CR team sits within the global Pricing Administration organization and operates as a center of excellence spanning governance, operations, and commercial strategy.
+    </p>
+    <p class="section-body" style="margin-top: 16px;">
+      From the moment a product price is decided at the factory, through master data updates, market-level adjustments, channel pricing, exception handling, and policy compliance — the Pricing team owns and executes every step of that journey.
+    </p>
+  </div>
+</section>
+
+<!-- PROCESS FLOW -->
+<section class="process-section">
+  <div class="process-inner">
+    <div class="section-title">How we operate</div>
+    <h2 class="section-heading">The Pricing Process — 6 Steps</h2>
+    <div class="steps-grid">
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-name">Price Decided</div>
+        <div class="step-detail">Goodyear establishes a base price for each product, setting the foundation for all downstream pricing activities.</div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-name">Master Data Updates</div>
+        <div class="step-detail">Pricing Specialists update and maintain pricing master data across systems to ensure accuracy and consistency.</div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-name">Market &amp; Country Pricing</div>
+        <div class="step-detail">Prices are adapted for local markets — including Minimum Advertised Pricing (MAP) and eCommerce channel requirements.</div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-name">Channel Base Pricing</div>
+        <div class="step-detail">Base prices are set at the channel level, accounting for differences across wholesale, retail, fleet, and OE distribution.</div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-name">Price Exceptions</div>
+        <div class="step-detail">Custom pricing is managed for Customer Programs, Deals (SCQs), Sales Programs, Rebates, and Competitive Pricing inputs.</div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-name">Policy &amp; Programs Exceptions</div>
+        <div class="step-detail">Final pricing decisions are validated through the Sales Operations Portal and aligned with Routing Guidelines before execution.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="pillars-section">
+  <div class="section">
+    <div class="section-title">What we own</div>
+    <h2 class="section-heading">Three Pillars of Responsibility</h2>
+    <div class="pillars-grid">
+
+      <div class="pillar">
+        <div class="pillar-name">Pricing Governance &amp; Policy Management</div>
+        <div class="pillar-sub">Partners with</div>
+        <ul>
+          <li>Sales</li>
+          <li>Revenue</li>
+          <li>Business Units</li>
+        </ul>
+        <div class="pillar-sub">Responsibilities</div>
+        <ul>
+          <li>Sales policy management</li>
+          <li>Standard Operating Procedures (SOPs)</li>
+          <li>Minimum Advertised Pricing (MAP)</li>
+        </ul>
+        <div class="pillar-team">Price &amp; Policy Setting Team</div>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-name">Pricing Operations &amp; Execution</div>
+        <div class="pillar-sub">Partners with</div>
+        <ul>
+          <li>Billing</li>
+          <li>Master Data</li>
+          <li>AR / Credit</li>
+          <li>Engineering</li>
+          <li>Procurement</li>
+          <li>Consumer OE</li>
+        </ul>
+        <div class="pillar-sub">Responsibilities</div>
+        <ul>
+          <li>Price implementation &amp; validation</li>
+          <li>Pricing data maintenance and execution</li>
+          <li>Original Equipment (OE) pricing support</li>
+        </ul>
+        <div class="pillar-team">Price &amp; Policy Setting Team</div>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-name">Commercial Pricing &amp; Customer Programs</div>
+        <div class="pillar-sub">Partners with</div>
+        <ul>
+          <li>Marketing</li>
+          <li>Sales</li>
+          <li>Finance</li>
+          <li>Revenue</li>
+          <li>Business Units</li>
+        </ul>
+        <div class="pillar-sub">Responsibilities</div>
+        <ul>
+          <li>Sales programs, promotions, and pricing initiatives</li>
+          <li>Special pricing agreements and commercial deals</li>
+        </ul>
+        <div class="pillar-team">Price &amp; Policy Exception Team</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team-section">
+  <div class="team-inner">
+    <div class="section-title">The people</div>
+    <h2 class="section-heading" style="color:var(--white);">Our Team</h2>
+
+    <div class="team-gm">
+      <div class="team-gm-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="8" r="4" fill="#0A0A0A"/>
+          <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="team-gm-name">Amy Buehner</div>
+        <div class="team-gm-role">GM, Pricing Administration</div>
+      </div>
+    </div>
+
+    <div class="team-cr-label">Costa Rica Operations — Two teams, one mission</div>
+    <div class="team-leads">
+      <div class="team-lead">
+        <div class="team-lead-name">Daniela Vega</div>
+        <div class="team-lead-role">Pricing Operations Team Lead</div>
+      </div>
+      <div class="team-lead">
+        <div class="team-lead-name">Josue Rojas</div>
+        <div class="team-lead-role">Pricing Operations Team Lead</div>
+      </div>
+    </div>
+
+    <div class="team-cr-label" style="margin-top: 8px;">Pricing Specialists — CR</div>
+    <div class="team-specialists">
+      <span class="specialist-chip">Daniel Vargas</span>
+      <span class="specialist-chip">Manuel O'Riley</span>
+      <span class="specialist-chip">James Loria</span>
+      <span class="specialist-chip">Meryan Solano</span>
+      <span class="specialist-chip">Geraldo Cabrera</span>
+      <span class="specialist-chip">Natalia Quesada</span>
+      <span class="specialist-chip">Daniel Saenz</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <span class="footer-brand">GOODYEAR — Pricing CR</span>
+  <span class="footer-note">Goodyear Proprietary &amp; Confidential · For internal use only</span>
+</footer>
+
+</body>
+</html>
